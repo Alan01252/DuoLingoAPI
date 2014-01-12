@@ -1,0 +1,8 @@
+{
+    "require": {
+        "guzzle/guzzle": "*"
+    },
+    "autoload": {
+        "psr-4" : {"alan01252\\": "src/"}
+    }
+}
