@@ -2,6 +2,7 @@
 namespace alan01252\DuoLingoApi;
 
 use Guzzle\Http\Client;
+use Guzzle\Http\Exception\BadResponseException;
 
 /**
  * Class DuoLingoWordFinder
@@ -40,13 +41,8 @@ class DuoLingoWordFinder
 
         $this->client->login();
         $request = $this->client->getGuzzleClient()->get($url);
-        $response = $request->send()->json();
+        return $request->send()->json();
 
-        if (!isset($response['vocab'])) {
-            return false;
-        }
-
-        return $response['vocab'];
     }
 
     /**
@@ -61,9 +57,7 @@ class DuoLingoWordFinder
         $i = 1;
         $foundWords = [];
 
-        $this->fetchWordsFromDuoLingo();
-
-        while ($words = $this->fetchWordsFromDuoLingo($i, $sortBy, $desc)) {
+        while ($words = $this->fetchWordsFromDuoLingo($i, $sortBy, $desc)['vocab']) {
 
             foreach ($words as $word) {
                 $foundWords[] = $word['surface_form'];
@@ -79,6 +73,11 @@ class DuoLingoWordFinder
                 break;
             }
         }
+    }
+
+    public function getTotalKnownWords()
+    {
+       return $this->fetchWordsFromDuoLingo(1)['vocab_count'];
     }
 
 }
