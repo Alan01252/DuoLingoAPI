@@ -6,20 +6,22 @@ in future.
 
 ##Example Usage 
 
-<?php
-
-$config = [
-    'login' => 'DuoLingoUsername',
-    'password' => 'DuoLingoPassword'
-];
-
-$duoLingoApi = new \alan01252\DuoLingoApi\DuoLingoApi($config);
-
-//Pull a list of words from Duolingo ordered by strength ASC
-foreach($duoLingoApi->getWordFinder()->getWords('strength', 'false' , 5) as $words) {
-    var_dump($words); //Dumps an array of twenty words five times
-}
-
-//Get total known words for user
-
-var_dump($duoLingoApi->getWordFinder()->getTotalKnownWords();) //100
+```php
+    <?php
+    
+    $config = [
+        'login' => 'DuoLingoUsername',
+        'password' => 'DuoLingoPassword'
+    ];
+    
+    $duoLingoApi = new \alan01252\DuoLingoApi\DuoLingoApi($config);
+    
+    //Pull a list of words from Duolingo ordered by strength ASC
+    foreach($duoLingoApi->getWordFinder()->getWords('strength', 'false' , 5) as $words) {
+        var_dump($words); //Dumps an array of twenty words five times
+    }
+    
+    //Get total known words for user
+    
+    var_dump($duoLingoApi->getWordFinder()->getTotalKnownWords();) //100
+```
