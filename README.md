@@ -19,3 +19,7 @@ $duoLingoApi = new \alan01252\DuoLingoApi\DuoLingoApi($config);
 foreach($duoLingoApi->getWordFinder()->getWords('strength', 'false' , 5) as $words) {
     var_dump($words); //Dumps an array of twenty words five times
 }
+
+//Get total known words for user
+
+var_dump($duoLingoApi->getWordFinder()->getTotalKnownWords();) //100
