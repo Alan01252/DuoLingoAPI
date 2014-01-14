@@ -50,9 +50,9 @@ class DuoLingoWordFinder
     }
 
     /**
-     * @param string $sortBy
-     * @param string $desc
-     * @param int $pageLimit
+     * @param string $sortBy e.g strength
+     * @param string $desc true/false
+     * @param int $pageLimit total pages to return
      *
      * @return \Generator
      */
@@ -70,6 +70,8 @@ class DuoLingoWordFinder
             }
 
             yield $foundWords;
+
+            $foundWords = [];
 
             $i++;
 
